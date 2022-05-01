@@ -1,0 +1,73 @@
+--
+title: "Final Presentation"
+author: "Author: Nicholas Goodman"
+date: "`r format(Sys.time(), '%B %d, %Y @ %I:%M %p')`"
+output: ioslides_presentation
+---
+
+```{r global_options, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  comment = NA
+)
+```
+
+## Packages Used
+
+Tidyverse was used to manipulate data and to plot data.
+
+```{r, echo = TRUE}
+library(tidyverse)
+```
+
+
+## Insert Dataset name
+
+Type about the set and how I found it
+
+**Variables in the Dataset:**
+
+type out the variables.
+
+```{r}
+data <- read_csv("data/cappunish20220107.csv")
+```
+
+##
+
+You only need to have two different graphs, find something interesting in both of them.
+
+```{r, fig.align = "center", fig.width = 7.5}
+
+```
+
+##
+
+```{r, fig.align = "center", fig.width = 7.5}
+
+```
+
+
+##
+
+```{r, fig.align = "center", fig.width = 9}
+
+```
+
+
+
+##
+
+```{r, fig.align = "center", fig.width = 7, fig.cap = "Figure Caption:"}
+
+```
+
+
+##
+
+```{r}
+
+```
+
