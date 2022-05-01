@@ -1,0 +1,88 @@
+---
+title: "Final Presentation"
+author: "Author: Nicholas Goodman"
+date: "`r format(Sys.time(), '%B %d, %Y @ %I:%M %p')`"
+output: ioslides_presentation
+---
+
+```{r global_options, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  comment = NA
+)
+```
+
+## Packages Used
+
+Tidyverse was used to manipulate data and to plot data.
+
+```{r, echo = TRUE}
+library(tidyverse)
+```
+
+
+## NFL Scores and Betting Data
+
+This set was found on Kaggle, and it gives extensive details on every single NFL stadium. It will be used to compare variables between several different stadiums. 
+
+**Variables in the Dataset:**
+
+`stadium_name`: The name of the stadium
+`stadium_location`: The location of the stadium
+`stadium_open`: The year the stadium opened
+`stadium_closed`: The year the stadium closed (if it had closed)
+`stadium_type`: The type of stadium (indoor, outdoor, retractable)
+`stadium_address`: The address for the stadium
+
+##
+
+`stadium_weather_station_code`: The stadium zip code for weather data collection
+`stadium_weather_type`: The weather descriptor for stadium based on average temperature
+`stadium_capacity`: The stadium seating capacity
+`stadium_surface`: The stadium surface type (grass, turf)
+`STATION`: The stadium weather station ID for NOAA data
+`NAME`: The stadium weather station name
+`LATITUDE`: The stadium latitude.
+
+```{r}
+
+data <- read_csv("nfl_stadiums.csv")
+```
+
+##
+
+You only need to have two different graphs, find something interesting in both of them.
+
+```{r}
+ggplot(data, aes(x = stadium_type, fill = stadium_year)) + geom_bar() + labs("NFL stadiums that are indoor and outdoor")
+```
+
+##
+
+```{r, fig.align = "center", fig.width = 7.5}
+
+```
+
+
+##
+
+```{r, fig.align = "center", fig.width = 9}
+
+```
+
+
+
+##
+
+```{r, fig.align = "center", fig.width = 7, fig.cap = "Figure Caption:"}
+
+```
+
+
+##
+
+```{r}
+
+```
