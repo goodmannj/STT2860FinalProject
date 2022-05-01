@@ -32,7 +32,7 @@ Type about the set and how I found it
 type out the variables.
 
 ```{r}
-data <- read_csv("data/cappunish20220107.csv")
+data <- read_csv("https://www.kaggle.com/datasets/tobycrabtree/nfl-scores-and-betting-data?select=nfl_stadiums.csv")
 ```
 
 ##
