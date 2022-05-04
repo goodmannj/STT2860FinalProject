@@ -23,66 +23,63 @@ library(tidyverse)
 ```
 
 
-## NFL Scores and Betting Data
 
-This set was found on Kaggle, and it gives extensive details on every single NFL stadium. It will be used to compare variables between several different stadiums. 
+## NFL Scores and Betting Data, nfl_stadiums
+
+This set was found on Kaggle, and it gives extensive details on every single NFL stadium. It will be used to compare variables between several different stadiums.  It was updated 3 months ago according to it's Kaggle site. 
+
+##
 
 **Variables in the Dataset:**
 
-`stadium_name`: The name of the stadium
-`stadium_location`: The location of the stadium
-`stadium_open`: The year the stadium opened
-`stadium_closed`: The year the stadium closed (if it had closed)
-`stadium_type`: The type of stadium (indoor, outdoor, retractable)
-`stadium_address`: The address for the stadium
+* `stadium_name`: The name of the stadium
+* `stadium_location`: The location of the stadium
+* `stadium_open`: The year the stadium opened
+* `stadium_closed`: The year the stadium closed (if it had closed)
+* `stadium_type`: The type of stadium (indoor, outdoor, retractable)
+* `stadium_address`: The address for the stadium
 
 ##
 
-`stadium_weather_station_code`: The stadium zip code for weather data collection
-`stadium_weather_type`: The weather descriptor for stadium based on average temperature
-`stadium_capacity`: The stadium seating capacity
-`stadium_surface`: The stadium surface type (grass, turf)
-`STATION`: The stadium weather station ID for NOAA data
-`NAME`: The stadium weather station name
-`LATITUDE`: The stadium latitude.
+* `stadium_weather_station_code`: The stadium zip code for weather data collection
+* `stadium_weather_type`: The weather descriptor for stadium based on average temperature
+* `stadium_capacity`: The stadium seating capacity
+* `stadium_surface`: The stadium surface type (grass, turf)
+* `STATION`: The stadium weather station ID for NOAA data
+* `NAME`: The stadium weather station name
+* `LATITUDE`: The stadium latitude
+* `LONGITUDE`: The stadium longitude
+* `ELEVATION`: The stadium elevation
+
+```{r}
+library(readr)
+nfl_stadiums <- 
+  read_csv("~/Project 3/STT2860LastProject/Data/nfl_stadiums.csv")
+
+```
+
+
+##
+
+As this box plot shows, while there are still more outdoor stadiums in the NFL, the newer stadiums tend to be indoor or retractable more often. 
+
+```{r}
+nfl_type <- nfl_stadiums %>%
+  filter(stadium_type == c("indoor", "outdoor", "retractable"))
+
+ggplot(nfl_type, aes(x = stadium_type, y = stadium_open)) + geom_boxplot(fill = c("blue", "green", "red")) + labs(title = "Time Frame for Stadium Design", x = "Type of Stadium", y = "The Year the Stadium Opened")
+
+```
+
+##
+
+This graph shows us that stadiums in a cold location generally have higher capacity limits compared to other NFL stadiums, while dome and warm stadiums have less in general.
 
 ```{r}
 
-data <- read_csv("nfl_stadiums.csv")
-```
+nfl_stadium_capacity <- nfl_stadiums %>%
+  filter(stadium_weather_type == c("cold", "dome", "moderate", "warm"))
 
-##
-
-You only need to have two different graphs, find something interesting in both of them.
-
-```{r}
-ggplot(data, aes(x = stadium_type, fill = stadium_year)) + geom_bar() + labs("NFL stadiums that are indoor and outdoor")
-```
-
-##
-
-```{r, fig.align = "center", fig.width = 7.5}
-
-```
-
-
-##
-
-```{r, fig.align = "center", fig.width = 9}
-
-```
-
-
-
-##
-
-```{r, fig.align = "center", fig.width = 7, fig.cap = "Figure Caption:"}
-
-```
-
-
-##
-
-```{r}
+ggplot(nfl_stadium_capacity, aes(x = stadium_weather_type, y = stadium_capacity)) + geom_boxplot(fill = c("Blue", "white", "brown", "orange")) + labs(title = "Stadium Capacity Based on Weather Conditions", x = "Average Weather Conditions", y = "The Stadium Capacity")
 
 ```
